@@ -1,6 +1,6 @@
 # PiBox OS
 
-[Download the latest version](https://github.com/kubesail/pibox-os/releases)
+[Download the latest version](https://github.com/ranchoham/pibox-os/releases)
 
 This repository contains scripts and kernel modules used to modify Raspberry Pi OS in order to take full advantage of the PiBox hardware.
 
@@ -9,7 +9,7 @@ This repository contains scripts and kernel modules used to modify Raspberry Pi 
 This script installs everything (PWM, screen, k3s, and KubeSail agent)
 
 ```bash
-curl -s https://raw.githubusercontent.com/kubesail/pibox-os/main/provision-os.sh | sudo bash
+curl -s https://raw.githubusercontent.com/ranchoham/pibox-os/main/provision-os.sh | sudo bash
 ```
 
 ## PWM Fan Support
@@ -22,7 +22,7 @@ We developed a display service that draws stats and other useful info to the dis
 
 ```bash
 # Clone PiBox OS repo
-git clone https://github.com/kubesail/pibox-os.git
+git clone https://github.com/ranchoham/pibox-os.git
 
 # Enable Display Driver
 pushd pibox-os/st7789_module
@@ -39,8 +39,8 @@ dtoverlay=drm-minipitft13,rotate=0,fps=60
 EOF
 
 # Download pibox-framebuffer binary
-curl -s https://raw.githubusercontent.com/kubesail/pibox-os/main/setup.sh | sudo bash
+curl -s https://raw.githubusercontent.com/ranchoham/pibox-os/main/setup.sh | sudo bash
 ```
 
-Then you can follow the instructions here for drawing your own images to the screen https://github.com/kubesail/pibox-framebuffer#pibox-framebuffer
+Then you can follow the instructions here for drawing your own images to the screen https://github.com/ranchoham/pibox-framebuffer#pibox-framebuffer
 
