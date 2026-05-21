@@ -1,6 +1,6 @@
 #!/bin/bash
 # this script can now be found in proivision-os.sh. This is only for fixing v7 of pibox-os or below
-git clone https://github.com/kubesail/pibox-os.git /tmp/pibox-os
+git clone https://github.com/ranchoham/pibox-os.git /tmp/pibox-os
 pushd /tmp/pibox-os/st7789_module
 make
 mv /lib/modules/"$(uname -r)"/kernel/drivers/staging/fbtft/fb_st7789v.ko /lib/modules/"$(uname -r)"/kernel/drivers/staging/fbtft/fb_st7789v.BACK

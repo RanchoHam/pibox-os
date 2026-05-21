@@ -1,7 +1,7 @@
 #!/bin/bash
 set -x
 
-FB_VERSION="v$(curl --connect-timeout 10 -L https://raw.githubusercontent.com/kubesail/pibox-framebuffer/main/VERSION.txt)"
+FB_VERSION="v$(curl --connect-timeout 10 -L https://raw.githubusercontent.com/ranchoham/pibox-framebuffer/main/VERSION.txt)"
 if [ "$EUID" -ne 0 ]
   then echo "Please run as root"
   exit
@@ -31,7 +31,7 @@ mkdir -p /opt/kubesail/
 echo "downloading pibox-framebuffer $FB_VERSION"
 
 if [[ ! -f $FB_PATH ]]; then
-    curl --connect-timeout 10 -sLo $FB_PATH https://github.com/kubesail/pibox-framebuffer/releases/download/$FB_VERSION/pibox-framebuffer-linux-${architecture}-$FB_VERSION
+    curl --connect-timeout 10 -sLo $FB_PATH https://github.com/ranchoham/pibox-framebuffer/releases/download/$FB_VERSION/pibox-framebuffer-linux-${architecture}-$FB_VERSION
     chmod +x $FB_PATH
 fi
 

@@ -60,7 +60,7 @@ groupadd sambagroup
 
 # Download pibox-host backend
 mkdir -p /opt/pibox-host
-PIBOX_HOST_VERSION=$(curl -s "https://api.github.com/repos/kubesail/pibox-host/releases/latest" | jq -r '.tag_name')
+PIBOX_HOST_VERSION=$(curl -s "https://api.github.com/repos/ranchoham/pibox-host/releases/latest" | jq -r '.tag_name')
 TARGET_DIR=/opt/pibox-host/$PIBOX_HOST_VERSION
 mkdir -p $TARGET_DIR
 echo "Extracting tarball to $TARGET_DIR ... (this may take a while)"
@@ -68,7 +68,7 @@ if [ -f pibox-host-$PIBOX_HOST_VERSION.tar.gz ]; then
   echo "Using existing tarball"
 else
   echo "Downloading tarball"
-  curl -L https://github.com/kubesail/pibox-host/releases/download/$PIBOX_HOST_VERSION/pibox-host-$PIBOX_HOST_VERSION.tar.gz \
+  curl -L https://github.com/ranchoham/pibox-host/releases/download/$PIBOX_HOST_VERSION/pibox-host-$PIBOX_HOST_VERSION.tar.gz \
     -o /opt/pibox-host/pibox-host-$PIBOX_HOST_VERSION.tar.gz
 fi
 tar -xzf /opt/pibox-host/pibox-host-$PIBOX_HOST_VERSION.tar.gz --directory=$TARGET_DIR
@@ -90,7 +90,7 @@ echo "tmpfs /var/tmp tmpfs defaults,noatime,nosuid,nodev,noexec,mode=0755,size=6
 
 # Clone PiBox OS repo for building fan/display drivers
 rm -rf pibox-os
-git clone https://github.com/kubesail/pibox-os.git
+git clone https://github.com/ranchoham/pibox-os.git
 pushd pibox-os
 echo "PIBOX_RELEASE=$(git rev-parse --short HEAD)" >/etc/pibox-release
 popd
@@ -170,7 +170,7 @@ service ssh --full-restart
 
 # Place PiBox support public key in for local debugging at factory
 mkdir -p /root/.ssh
-echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCluY8xnwyrbfdxQebvawYI9qGvDqxsnKm8SYXKvJ8c0sO9dU3531dFHwkRLqdtiYQZl0xr+kuKSGGtFNJ1pUjJ+5t9tfwUZO3BL7DJkKYqUP4uuPg13Y1XFUsQw++IGW8pZNfcQjIDqYcaFd+Z0N7CCEVbHcBExaGYi/XaINl6EF+7aPSaymZrPXyzlVfFHbJlAN4+itWem4Ycm0oIu2Cw1YGXdap3RMrunjluYbHMWCJjpj1ipSpJsgyWq77+IX1Bom1pQypAZr1tu/lQyWFDtaJwcz3ZeSjqrTdFa5uxM4ppzVEgZEIQUKZmn/ETT9EWIsYugbhXKASdPdtx37ACpg0hkBZMBfffrOD9uhPjjhXhAzL3CCbGLqHdPj5SMtiBOJZ0+r8za0HK8NkTqpFNc9onKAtXXQr1Sajx4pd3tUPsyLDx4mROUxdOjRrO7xwmf4Ykxl7zy9a6W6NugJjupl4HF0tOm/P64gqSCjAZj0XpNDS+L8J2tVVVxqCpgYU=" >>/root/.ssh/authorized_keys
+### echo "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCluY8xnwyrbfdxQebvawYI9qGvDqxsnKm8SYXKvJ8c0sO9dU3531dFHwkRLqdtiYQZl0xr+kuKSGGtFNJ1pUjJ+5t9tfwUZO3BL7DJkKYqUP4uuPg13Y1XFUsQw++IGW8pZNfcQjIDqYcaFd+Z0N7CCEVbHcBExaGYi/XaINl6EF+7aPSaymZrPXyzlVfFHbJlAN4+itWem4Ycm0oIu2Cw1YGXdap3RMrunjluYbHMWCJjpj1ipSpJsgyWq77+IX1Bom1pQypAZr1tu/lQyWFDtaJwcz3ZeSjqrTdFa5uxM4ppzVEgZEIQUKZmn/ETT9EWIsYugbhXKASdPdtx37ACpg0hkBZMBfffrOD9uhPjjhXhAzL3CCbGLqHdPj5SMtiBOJZ0+r8za0HK8NkTqpFNc9onKAtXXQr1Sajx4pd3tUPsyLDx4mROUxdOjRrO7xwmf4Ykxl7zy9a6W6NugJjupl4HF0tOm/P64gqSCjAZj0XpNDS+L8J2tVVVxqCpgYU=" >>/root/.ssh/authorized_keys
 
 # Clean bash history
 history -c && history -w

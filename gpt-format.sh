@@ -30,4 +30,4 @@ sudo mount /var/lib/rancher
 ## At this point, your disks are ready! Let's re-install k3s:
 curl --connect-timeout 10 --retry 5 --retry-delay 3 -L https://get.k3s.io | INSTALL_K3S_CHANNEL=stable INSTALL_K3S_EXEC="server --cluster-cidr=172.31.10.0/24 --no-deploy traefik --disable=traefik --kubelet-arg container-log-max-files=3 --kubelet-arg container-log-max-size=10Mi" sh
 # and re-install KubeSail agent:
-sudo kubectl create -f https://api.kubesail.com/byoc
+###sudo kubectl create -f https://api.kubesail.com/byoc

@@ -5,7 +5,7 @@ mkdir -p /opt/kubesail/
 chown -R 989 /opt/kubesail/
 
 # Install KubeSail Debug helper
-curl -sLo /usr/local/bin/kubesail-support https://raw.githubusercontent.com/kubesail/pibox-os/main/kubesail-support.sh
+curl -sLo /usr/local/bin/kubesail-support https://raw.githubusercontent.com/ranchoham/pibox-os/main/kubesail-support.sh
 chmod +x /usr/local/bin/kubesail-support
 
 # Install PiBox first boot script
