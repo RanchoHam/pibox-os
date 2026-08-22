@@ -122,12 +122,14 @@ sysctl -p
 echo "* soft nofile 8192" >> /etc/security/limits.conf
 
 # Swap
+if apt list --installed dphys-swapfile; then
 swapoff -a
 systemctl mask  "dev-*.swap"
 dphys-swapfile swapoff
 dphys-swapfile uninstall
 update-rc.d dphys-swapfile remove
 apt-get -yqq purge dphys-swapfile || true
+fi
 
 # Install helm
 curl -Lo helm.tar.gz https://get.helm.sh/helm-v3.8.2-linux-arm64.tar.gz
