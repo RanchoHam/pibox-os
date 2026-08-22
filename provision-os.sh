@@ -122,7 +122,7 @@ sysctl -p
 echo "* soft nofile 8192" >> /etc/security/limits.conf
 
 # Swap
-if apt list --installed dphys-swapfile; then
+if which dphys-swapfile; then
 swapoff -a
 systemctl mask  "dev-*.swap"
 dphys-swapfile swapoff
